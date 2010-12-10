@@ -1,1 +1,7 @@
-android create project --package com.example.helloandroid --activity HelloAndroid --target 2 --path ./HelloAndroid
+#! /bin/sh
+
+android create project \
+    --package com.example.helloandroid \
+    --activity HelloAndroid \
+    --target android-8 \
+    --path ./HelloAndroid
