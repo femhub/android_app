@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="Hello World, HelloAndroid"
-    />
-</LinearLayout>
-
+<AbsoluteLayout
+android:id="@+id/widget45"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<TextView
+android:id="@+id/widget44"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:text="Hello World,  HelloAndroid"
+android:layout_x="0px"
+android:layout_y="66px"
+>
+</TextView>
+</AbsoluteLayout>
