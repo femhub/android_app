@@ -13,13 +13,19 @@ public class HelloAndroid extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        final Button button = (Button) findViewById(R.id.run);
+        this.setContentView(R.layout.main);
+        final Button button = (Button) this.findViewById(R.id.run);
+        final HelloAndroid self = this;
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),
-                    "Run clicked!", Toast.LENGTH_SHORT).show();
+                self.run();
             }
         });
+    }
+
+    public void run()
+    {
+        Toast.makeText(this.getApplicationContext(),
+            "Run clicked!", Toast.LENGTH_SHORT).show();
     }
 }
