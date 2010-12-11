@@ -49,7 +49,7 @@ public class HelloAndroid extends Activity
         JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
         try
         {
-          String string = client.callString("mymethod");
+          String string = client.callString("init", "some_uuid");
           double d = client.callDouble("pow", 4, 5);
           int i = client.callInt("add", 56, 25);
         }
