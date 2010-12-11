@@ -9,6 +9,9 @@ import android.widget.TextView;
 import android.widget.SeekBar;
 import android.view.View;
 
+import org.alexd.jsonrpc.JSONRPCClient;
+import org.alexd.jsonrpc.JSONRPCException;
+
 public class HelloAndroid extends Activity
     implements SeekBar.OnSeekBarChangeListener
 {
@@ -43,7 +46,20 @@ public class HelloAndroid extends Activity
             num2.getText() + ";";
         Toast.makeText(this.getApplicationContext(), t,
                 Toast.LENGTH_SHORT).show();
-        this.output.setText("Some output.... apojidf aposidjf aposijdf aposijf aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj apsoifj aspoifj asp");
+        JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
+        try
+        {
+          String string = client.callString("mymethod");
+          double d = client.callDouble("pow", 4, 5);
+          int i = client.callInt("add", 56, 25);
+        }
+        catch (JSONRPCException e)
+        {
+          e.printStackTrace();
+        }
+
+        /*this.output.setText("Some output.... apojidf aposidjf aposijdf aposijf aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj apsoifj aspoifj asp");
+*/
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
