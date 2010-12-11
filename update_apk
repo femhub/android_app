@@ -1,0 +1,7 @@
+#! /bin/sh
+
+git checkout gh-pages
+cp myapp/bin/HelloAndroid-debug.apk .
+git add HelloAndroid-debug.apk
+git commit -m "update apk"
+git checkout master
