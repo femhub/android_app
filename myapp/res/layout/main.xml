@@ -26,7 +26,7 @@ android:layout_y="7px"
 </CheckBox>
 
 <EditText
-android:id="@+id/widget38"
+android:id="@+id/num1"
 android:layout_width="100px"
 android:layout_height="wrap_content"
 android:text="45"
@@ -36,7 +36,7 @@ android:layout_y="10px"
 >
 </EditText>
 <EditText
-android:id="@+id/widget101"
+android:id="@+id/num2"
 android:layout_width="100px"
 android:layout_height="wrap_content"
 android:text="3"

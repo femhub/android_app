@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.EditText;
 import android.view.View;
 
 public class HelloAndroid extends Activity
@@ -25,7 +26,11 @@ public class HelloAndroid extends Activity
 
     public void run()
     {
-        Toast.makeText(this.getApplicationContext(),
-            "Run clicked!", Toast.LENGTH_SHORT).show();
+        final EditText num1 = (EditText) this.findViewById(R.id.num1);
+        final EditText num2 = (EditText) this.findViewById(R.id.num2);
+        final CharSequence t = "num1 = " + num1.getText() + "; num2 = " +
+            num2.getText() + ";";
+        Toast.makeText(this.getApplicationContext(), t,
+                Toast.LENGTH_SHORT).show();
     }
 }
