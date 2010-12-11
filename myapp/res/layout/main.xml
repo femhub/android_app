@@ -77,12 +77,21 @@ android:text="Example 3"
 </RadioButton>
 </RadioGroup>
 
+<SeekBar
+android:id="@+id/seekbar"
+android:layout_width="200px"
+android:layout_height="wrap_content"
+android:layout_x="7px"
+android:layout_y="242px"
+>
+</SeekBar>
+
 <ImageView
 android:id="@+id/widget102"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:layout_x="15px"
-android:layout_y="242px"
+android:layout_y="262px"
 >
 </ImageView>
 
