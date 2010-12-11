@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.SeekBar;
 import android.view.View;
 
@@ -14,6 +15,7 @@ public class HelloAndroid extends Activity
     SeekBar seekbar;
     EditText num1;
     EditText num2;
+    TextView output;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class HelloAndroid extends Activity
         this.seekbar.setMax(100);
         this.num1 = (EditText) this.findViewById(R.id.num1);
         this.num2 = (EditText) this.findViewById(R.id.num2);
+        this.output = (TextView) this.findViewById(R.id.output);
 
         final Button button = (Button) this.findViewById(R.id.run);
         final HelloAndroid self = this;
@@ -40,6 +43,7 @@ public class HelloAndroid extends Activity
             num2.getText() + ";";
         Toast.makeText(this.getApplicationContext(), t,
                 Toast.LENGTH_SHORT).show();
+        this.output.setText("Some output.... apojidf aposidjf aposijdf aposijf aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj apsoifj aspoifj asp");
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
