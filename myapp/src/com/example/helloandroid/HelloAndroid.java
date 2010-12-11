@@ -36,7 +36,7 @@ public class HelloAndroid extends Activity
     }
 
     public void run() {
-        final CharSequence t = "num1 = " + num1.getText() + "; num2 = " +
+        final CharSequence t = "XX: num1 = " + num1.getText() + "; num2 = " +
             num2.getText() + ";";
         Toast.makeText(this.getApplicationContext(), t,
                 Toast.LENGTH_SHORT).show();
