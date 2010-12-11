@@ -55,11 +55,9 @@ public class HelloAndroid extends Activity
         }
         catch (JSONRPCException e)
         {
-          e.printStackTrace();
+          //this.output.setText(e.getStackTrace());
+          this.output.setText(e.toString());
         }
-
-        /*this.output.setText("Some output.... apojidf aposidjf aposijdf aposijf aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj aposifj aposifj aposijf aposifj apodsifj aosijf aposijf aposifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj pasoidfj apsoifj aposdifj aposdifj apsoijf apsoifdj apsoifj apsoifj aspoifj asp");
-*/
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
