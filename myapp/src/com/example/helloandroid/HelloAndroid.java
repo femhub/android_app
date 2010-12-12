@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.view.View;
 import android.util.Log;
@@ -23,6 +24,7 @@ public class HelloAndroid extends Activity
     EditText num1;
     EditText num2;
     TextView output;
+    CheckBox live;
     private static final String TAG = "HelloAndroid";
 
     @Override
@@ -36,6 +38,7 @@ public class HelloAndroid extends Activity
         this.num1 = (EditText) this.findViewById(R.id.num1);
         this.num2 = (EditText) this.findViewById(R.id.num2);
         this.output = (TextView) this.findViewById(R.id.output);
+        this.live = (CheckBox) this.findViewById(R.id.live);
 
         final Button button = (Button) this.findViewById(R.id.run);
         final HelloAndroid self = this;
@@ -75,6 +78,9 @@ public class HelloAndroid extends Activity
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
         String text = "" + progress;
         this.num2.setText(text);
+        if (this.live.isChecked()) {
+            this.run();
+        }
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
