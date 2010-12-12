@@ -53,9 +53,12 @@ public class HelloAndroid extends Activity
                 Toast.LENGTH_SHORT).show();
         try {
             JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
-            String string = client.callString("init", "some_uuid");
+            String string = client.callString("RPC.Engine.init", "some_uuid");
+            this.output.setText("Output = " + string);
+            /*
             double d = client.callDouble("pow", 4, 5);
             int i = client.callInt("add", 56, 25);
+            */
         } catch (Throwable e) {
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
