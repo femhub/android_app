@@ -48,8 +48,10 @@ public class HelloAndroid extends Activity
 
     public void run() {
         final CharSequence code = num1.getText() + " + " + num2.getText();
+        /*
         Toast.makeText(this.getApplicationContext(), code,
                 Toast.LENGTH_SHORT).show();
+        */
         try {
             JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
             String string = client.callString("RPC.Engine.init", "some_uuid");
@@ -71,14 +73,13 @@ public class HelloAndroid extends Activity
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
-        this.num2.setText(progress + " " + fromTouch);
+        String text = "" + progress;
+        this.num2.setText(text);
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
-        this.num1.setText("start");
     }
 
     public void onStopTrackingTouch(SeekBar seekBar) {
-        this.num1.setText("stop");
     }
 }
