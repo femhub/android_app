@@ -25,6 +25,7 @@ public class HelloAndroid extends Activity
     EditText num2;
     TextView output;
     CheckBox live;
+    String uuid;
     private static final String TAG = "HelloAndroid";
 
     @Override
@@ -39,6 +40,7 @@ public class HelloAndroid extends Activity
         this.num2 = (EditText) this.findViewById(R.id.num2);
         this.output = (TextView) this.findViewById(R.id.output);
         this.live = (CheckBox) this.findViewById(R.id.live);
+        this.uuid = null;
 
         final Button button = (Button) this.findViewById(R.id.run);
         final HelloAndroid self = this;
@@ -50,6 +52,9 @@ public class HelloAndroid extends Activity
     }
 
     public void run() {
+        // FIXME: the gui updates will not show until run() finishes, as those
+        // have to be done from a different thread, or use events somehow, just
+        // like in javascript the browser
         final CharSequence code = num1.getText() + " + " + num2.getText();
         /*
         Toast.makeText(this.getApplicationContext(), code,
@@ -57,10 +62,14 @@ public class HelloAndroid extends Activity
         */
         try {
             JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
-            String string = client.callString("RPC.Engine.init", "some_uuid");
-            //this.output.setText("Output = " + string);
-            string = client.callString("RPC.Engine.evaluate",
-                    "some_uuid", code);
+            String string;
+            if (this.uuid == null) {
+                this.uuid = "some_uuid";
+                this.output.setText("Initializing the engine...");
+                string = client.callString("RPC.Engine.init", this.uuid);
+            }
+            this.output.setText("Calculating...");
+            string = client.callString("RPC.Engine.evaluate", this.uuid, code);
             this.output.setText("Output = " + string);
             /*
             double d = client.callDouble("pow", 4, 5);
