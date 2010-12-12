@@ -1,5 +1,8 @@
 package com.example.helloandroid;
 
+import java.io.StringWriter;
+import java.io.PrintWriter;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -8,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.SeekBar;
 import android.view.View;
+import android.util.Log;
 
 import org.alexd.jsonrpc.JSONRPCClient;
 import org.alexd.jsonrpc.JSONRPCException;
@@ -19,6 +23,7 @@ public class HelloAndroid extends Activity
     EditText num1;
     EditText num2;
     TextView output;
+    private static final String TAG = "HelloAndroid";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,16 +53,15 @@ public class HelloAndroid extends Activity
                 Toast.LENGTH_SHORT).show();
         try {
             JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
-            try {
-              String string = client.callString("init", "some_uuid");
-              double d = client.callDouble("pow", 4, 5);
-              int i = client.callInt("add", 56, 25);
-            } catch (JSONRPCException e) {
-              //this.output.setText(e.getStackTrace());
-              this.output.setText(e.toString());
-            }
-        } catch (NoClassDefFoundError e) {
-          this.output.setText(e.toString());
+            String string = client.callString("init", "some_uuid");
+            double d = client.callDouble("pow", 4, 5);
+            int i = client.callInt("add", 56, 25);
+        } catch (Throwable e) {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            this.output.setText("Error = " + sw.toString());
+            Log.i(this.TAG, sw.toString());
         }
     }
 
