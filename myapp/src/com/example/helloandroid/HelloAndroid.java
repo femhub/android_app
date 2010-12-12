@@ -11,6 +11,7 @@ import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.view.View;
 import android.util.Log;
@@ -26,6 +27,7 @@ public class HelloAndroid extends Activity
     EditText num2;
     TextView output;
     CheckBox live;
+    RadioButton rb1, rb2, rb3;
     String uuid;
     private static final String TAG = "HelloAndroid";
 
@@ -41,6 +43,10 @@ public class HelloAndroid extends Activity
         this.num2 = (EditText) this.findViewById(R.id.num2);
         this.output = (TextView) this.findViewById(R.id.output);
         this.live = (CheckBox) this.findViewById(R.id.live);
+        this.rb1 = (RadioButton) this.findViewById(R.id.rb1);
+        this.rb2 = (RadioButton) this.findViewById(R.id.rb2);
+        this.rb3 = (RadioButton) this.findViewById(R.id.rb3);
+        this.rb1.toggle();
         this.uuid = null;
 
         final Button button = (Button) this.findViewById(R.id.run);
@@ -56,7 +62,14 @@ public class HelloAndroid extends Activity
         // FIXME: the gui updates will not show until run() finishes, as those
         // have to be done from a different thread, or use events somehow, just
         // like in javascript the browser
-        final CharSequence code = num1.getText() + " + " + num2.getText();
+        final String op;
+        if (this.rb1.isChecked())
+            op = " + ";
+        else if (this.rb2.isChecked())
+            op = " - ";
+        else
+            op = " * ";
+        final String code = num1.getText() + op + num2.getText();
         /*
         Toast.makeText(this.getApplicationContext(), code,
                 Toast.LENGTH_SHORT).show();

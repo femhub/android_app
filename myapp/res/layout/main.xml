@@ -55,24 +55,24 @@ android:layout_x="7px"
 android:layout_y="60px"
 >
 <RadioButton
-android:id="@+id/widget51"
+android:id="@+id/rb1"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="Example 1"
+android:text="Op: +"
 >
 </RadioButton>
 <RadioButton
-android:id="@+id/widget52"
+android:id="@+id/rb2"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="Example 2"
+android:text="Op: -"
 >
 </RadioButton>
 <RadioButton
-android:id="@+id/widget49"
+android:id="@+id/rb3"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:text="Example 3"
+android:text="Op: *"
 >
 </RadioButton>
 </RadioGroup>
