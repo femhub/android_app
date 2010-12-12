@@ -34,6 +34,7 @@ public abstract class JSONRPCClient {
 		{
 			//id hard-coded at 1 for now
 			jsonRequest.put("id", 1);
+			jsonRequest.put("jsonrpc", "2.0");
 			jsonRequest.put("method", method);
 			jsonRequest.put("params", jsonParams);
 		}
