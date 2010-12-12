@@ -47,13 +47,15 @@ public class HelloAndroid extends Activity
     }
 
     public void run() {
-        final CharSequence t = "XX: num1 = " + num1.getText() + "; num2 = " +
-            num2.getText() + ";";
-        Toast.makeText(this.getApplicationContext(), t,
+        final CharSequence code = num1.getText() + " + " + num2.getText();
+        Toast.makeText(this.getApplicationContext(), code,
                 Toast.LENGTH_SHORT).show();
         try {
             JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
             String string = client.callString("RPC.Engine.init", "some_uuid");
+            //this.output.setText("Output = " + string);
+            string = client.callString("RPC.Engine.evaluate",
+                    "some_uuid", code);
             this.output.setText("Output = " + string);
             /*
             double d = client.callDouble("pow", 4, 5);
