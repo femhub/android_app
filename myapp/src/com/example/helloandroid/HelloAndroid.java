@@ -46,16 +46,17 @@ public class HelloAndroid extends Activity
             num2.getText() + ";";
         Toast.makeText(this.getApplicationContext(), t,
                 Toast.LENGTH_SHORT).show();
-        JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
-        try
-        {
-          String string = client.callString("init", "some_uuid");
-          double d = client.callDouble("pow", 4, 5);
-          int i = client.callInt("add", 56, 25);
-        }
-        catch (JSONRPCException e)
-        {
-          //this.output.setText(e.getStackTrace());
+        try {
+            JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
+            try {
+              String string = client.callString("init", "some_uuid");
+              double d = client.callDouble("pow", 4, 5);
+              int i = client.callInt("add", 56, 25);
+            } catch (JSONRPCException e) {
+              //this.output.setText(e.getStackTrace());
+              this.output.setText(e.toString());
+            }
+        } catch (NoClassDefFoundError e) {
           this.output.setText(e.toString());
         }
     }
