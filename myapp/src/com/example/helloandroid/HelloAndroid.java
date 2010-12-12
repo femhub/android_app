@@ -47,7 +47,7 @@ public class HelloAndroid extends Activity
         this.rb1 = (RadioButton) this.findViewById(R.id.rb1);
         this.rb2 = (RadioButton) this.findViewById(R.id.rb2);
         this.rb3 = (RadioButton) this.findViewById(R.id.rb3);
-        this.rb1.toggle();
+        this.rb2.toggle();
         this.uuid = null;
 
         final Button button = (Button) this.findViewById(R.id.run);
@@ -70,7 +70,7 @@ public class HelloAndroid extends Activity
             op = " - ";
         else
             op = " * ";
-        final String code = num1.getText() + op + num2.getText();
+        final String code = "from sympy import var, factor\nvar('x')\nfactor(x**" + num1.getText() + op + num2.getText() + ")";
         /*
         Toast.makeText(this.getApplicationContext(), code,
                 Toast.LENGTH_SHORT).show();
@@ -99,7 +99,7 @@ public class HelloAndroid extends Activity
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
         String text = "" + progress;
-        this.num2.setText(text);
+        this.num1.setText(text);
         if (this.live.isChecked()) {
             this.run();
         }
