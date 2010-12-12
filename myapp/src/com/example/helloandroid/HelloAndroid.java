@@ -2,6 +2,7 @@ package com.example.helloandroid;
 
 import java.io.StringWriter;
 import java.io.PrintWriter;
+import java.util.UUID;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -64,7 +65,7 @@ public class HelloAndroid extends Activity
             JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
             String string;
             if (this.uuid == null) {
-                this.uuid = "some_uuid";
+                this.uuid = UUID.randomUUID().toString();
                 this.output.setText("Initializing the engine...");
                 string = client.callString("RPC.Engine.init", this.uuid);
             }
