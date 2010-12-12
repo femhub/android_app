@@ -3,6 +3,7 @@ package com.example.helloandroid;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 import java.util.UUID;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -83,12 +84,10 @@ public class HelloAndroid extends Activity
                 string = client.callString("RPC.Engine.init", this.uuid);
             }
             this.output.setText("Calculating...");
-            string = client.callString("RPC.Engine.evaluate", this.uuid, code);
-            this.output.setText("Output = " + string);
-            /*
-            double d = client.callDouble("pow", 4, 5);
-            int i = client.callInt("add", 56, 25);
-            */
+            JSONObject result = client.callJSONObject("RPC.Engine.evaluate",
+                    this.uuid, code);
+            String out = result.getString("out");
+            this.output.setText("Source: " + code + "\nOutput: " + out);
         } catch (Throwable e) {
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
