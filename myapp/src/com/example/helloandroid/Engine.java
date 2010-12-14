@@ -35,6 +35,7 @@ public class Engine extends IntentService {
                     this.uuid, code);
             String out = result.getString("out");
             //this.output.setText("Source: " + code + "\nOutput: " + out);
+            Log.i(this.TAG, "Output: " + out);
         } catch (Throwable e) {
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
