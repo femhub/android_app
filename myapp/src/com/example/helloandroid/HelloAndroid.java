@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.content.Intent;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -60,9 +61,6 @@ public class HelloAndroid extends Activity
     }
 
     public void run() {
-        // FIXME: the gui updates will not show until run() finishes, as those
-        // have to be done from a different thread, or use events somehow, just
-        // like in javascript the browser
         final String op;
         if (this.rb1.isChecked())
             op = " + ";
@@ -71,30 +69,9 @@ public class HelloAndroid extends Activity
         else
             op = " * ";
         final String code = "from sympy import var, factor\nvar('x')\nfactor(x**" + num1.getText() + op + num2.getText() + ")";
-        /*
-        Toast.makeText(this.getApplicationContext(), code,
-                Toast.LENGTH_SHORT).show();
-        */
-        try {
-            JSONRPCClient client = JSONRPCClient.create("http://lab.femhub.org/async");
-            String string;
-            if (this.uuid == null) {
-                this.uuid = UUID.randomUUID().toString();
-                this.output.setText("Initializing the engine...");
-                string = client.callString("RPC.Engine.init", this.uuid);
-            }
-            this.output.setText("Calculating...");
-            JSONObject result = client.callJSONObject("RPC.Engine.evaluate",
-                    this.uuid, code);
-            String out = result.getString("out");
-            this.output.setText("Source: " + code + "\nOutput: " + out);
-        } catch (Throwable e) {
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            e.printStackTrace(pw);
-            this.output.setText("Error = " + sw.toString());
-            Log.i(this.TAG, sw.toString());
-        }
+        Intent i = new Intent(getApplicationContext(), Engine.class);
+        i.putExtra("code", code);
+        startService(i);
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
